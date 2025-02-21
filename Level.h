@@ -24,7 +24,7 @@ class Level {
         // members
     public:
         // Default Constructor
-        Level();
+        Level(bool isLastStage);
 
         // Destructor
         ~Level();
