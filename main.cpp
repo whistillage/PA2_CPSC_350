@@ -13,10 +13,11 @@ int main(int argc, char* argv[]){
     }
 
     FileProcessor myFileProcessor;
-    myFileProcessor.readInputFile(argv[1]);
 
-    if(!myFileProcessor.readSuccessful()){
+    // if reading input file failed, terminate the program.
+    if(!myFileProcessor.readInputFile(argv[1])){
         cout << "Reading input file unsuccessful. Exit Program." << endl;
+        return -2;
     }
     
     World myWorld(myFileProcessor.getGameInfo());

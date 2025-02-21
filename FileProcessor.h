@@ -9,7 +9,6 @@ using namespace std;
 class FileProcessor {
     private:
         int _gameInfo[8];
-        int _isSucceed = 0;
     public:
         // Default Constructor
         FileProcessor();
@@ -17,10 +16,9 @@ class FileProcessor {
         // Destructor
         ~FileProcessor();
 
-        // get gameInfo from inputFile
-        void readInputFile(const char* inputFile);
-
-        bool readSuccessful();
+        // save gameInfo from inputFile
+        // return if input file was read successfully
+        bool readInputFile(const char* inputFile);
 
         int* getGameInfo();
 };

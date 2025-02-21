@@ -22,15 +22,14 @@ Line # 8 is the approximate percentage of the positions in each level with mushr
 
 Values on line 4-8 MUST sum to 100.
 */
-void FileProcessor::readInputFile(const char* inputFile){
+bool FileProcessor::readInputFile(const char* inputFile){
     ifstream inFile(inputFile);
+
+    // if reading input file failed, return false
     if (!inFile.is_open()){
         cout << "Error opening input file!!" << endl;
-        return;
+        return false;
     }
-
-    // mark that the file is read successfully.
-    _isSucceed = 1;
     
     // read lines of the input file
     for (int i = 0; i < 8; i++){
@@ -39,10 +38,7 @@ void FileProcessor::readInputFile(const char* inputFile){
         _gameInfo[i] = stoi(line);
     }
     inFile.close();
-}
-
-bool FileProcessor::readSuccessful(){
-    return _isSucceed;
+    return true;
 }
 
 int* FileProcessor::getGameInfo(){
