@@ -15,18 +15,19 @@ World::World(int gameInfo[]){
 World::~World(){
 }
 
-void World::printGameInfo(){
-    cout << _L << endl;
-    cout << _Percentage_of_Mushrooms << endl;
-}
-
 void World::createLevels(){
     _levels = new Level*[_L];
-    for (int i = 0; i < _L; i++){
-        _levels[i] = createLevel();
+
+    // create levels WITH warp unless it is a last stage
+    for (int i = 0; i < _L - 1; i++){
+        _levels[i] = createLevel(false);
     }
+
+    // create a level WITHOUT warp if it is a last stage
+    _levels[-1] = createLevel(true);
 }
 
-Level* World::createLevel(){
-    // Level을 동적으로 할당해서 포인터를 반환
+Level* World::createLevel(bool isLastStage){
+    Level newLevel(isLastStage);
+    return &newLevel;
 }

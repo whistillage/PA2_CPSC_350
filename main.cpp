@@ -21,7 +21,6 @@ int main(int argc, char* argv[]){
     }
     
     World myWorld(myFileProcessor.getGameInfo());
-    myWorld.printGameInfo();
 
     return 0;
 }
