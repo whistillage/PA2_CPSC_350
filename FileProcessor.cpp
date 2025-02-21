@@ -1,15 +1,14 @@
 #include "FileProcessor.h"
-#include "World.h"
 
-// Default Constructor: Allocates memory
+// Default Constructor
 FileProcessor::FileProcessor() {
 }
 
-// Destructor: Frees the memory allocated
+// Destructor
 FileProcessor::~FileProcessor() {
 }
 
-/* read Input File and save the game information in _gameinfo[8]*/
+/* read Input File and save the gameInfo in _gameinfo[8]*/
 /*
 Line # 1 is the number of levels, L (a positive integer)
 Line # 2 is the dimension of the grid, N (a positive integer)
@@ -41,6 +40,7 @@ bool FileProcessor::readInputFile(const char* inputFile){
     return true;
 }
 
+// return the pointer of _gameInfo
 int* FileProcessor::getGameInfo(){
     return _gameInfo;
 }
