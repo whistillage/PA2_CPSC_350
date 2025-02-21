@@ -1,9 +1,5 @@
 #include "World.h"
 
-// Default Constructor
-World::World(){
-}
-
 // Parameterized Constructor
 World::World(int gameInfo[]){
     _L = gameInfo[0];

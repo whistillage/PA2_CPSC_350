@@ -23,9 +23,6 @@ class World {
         /*Array of pointers of class 'Level'*/
         Level** _levels;
     public:
-        // Default Constructor
-        World();
-
         // Parameterized Constructor
         World(int gameInfo[]);
 
