@@ -29,7 +29,7 @@ class Level {
         // Destructor
         ~Level();
 
-        Level(int P_coins, int P_nothing, int P_)
+        Level(int P_coins, int P_nothing, int P_);
 };
 
 #endif // End of header guard
