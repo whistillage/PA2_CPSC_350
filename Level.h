@@ -8,7 +8,8 @@ using namespace std;
 
 class Level {
     private:
-        // members
+        int _dimension;
+        char** _grid;
     public:
         // Default Constructor
         Level(int* gameInfo, bool isLastStage);
