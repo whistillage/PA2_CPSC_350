@@ -14,6 +14,9 @@ World::~World(){
 }
 
 void World::createLevels(){
+    // seed random for construction of class 'Level'
+    srand(time(0));
+
     int level;
     // create levels WITH warp unless it is a last stage
     for (level = 0; level < _gameInfo[0] - 1; level++){
