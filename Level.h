@@ -2,8 +2,10 @@
 #define LEVEL_H
 
 #include <iostream>
-#include <fstream>
-#include <string>
+#include <cstdlib>
+#include <ctime>
+
+#include <random>
 using namespace std;
 
 class Level {
@@ -11,7 +13,7 @@ class Level {
         int _dimension;
         char** _grid;
     public:
-        // Default Constructor
+        // Constructor
         Level(int* gameInfo, bool isLastStage);
 
         // Destructor
