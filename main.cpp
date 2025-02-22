@@ -22,6 +22,7 @@ int main(int argc, char* argv[]){
     
     World myWorld(myFileProcessor.getGameInfo());
     myWorld.createLevels();
+    myWorld.printLevels();
 
     return 0;
 }

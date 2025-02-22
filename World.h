@@ -27,6 +27,8 @@ class World {
         // create a class 'Level' and return its address
         // if it is a last stage, then create WITHOUT a warp, vice versa
         Level* createLevel(bool isLastStage);
+
+        void printLevels();
 };
 
 #endif // End of header guard

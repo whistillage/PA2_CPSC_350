@@ -3,6 +3,7 @@
 // Default Constructor
 Level::Level(int* gameInfo, bool isLastStage){
     _dimension = gameInfo[1];
+    
     _grid = new char*[_dimension];
     for (int i = 0; i < _dimension; i++){
         _grid[i] = new char[_dimension];
@@ -11,6 +12,7 @@ Level::Level(int* gameInfo, bool isLastStage){
         }
     }
 }
+
 // Destructor
 Level::~Level(){
     for (int i = 0; i < _dimension; i++){
@@ -23,3 +25,4 @@ Level::~Level(){
 char** Level::getGrid(){
     return _grid;
 }
+
