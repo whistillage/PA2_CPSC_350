@@ -25,6 +25,6 @@ void World::createLevels(){
 }
 
 Level* World::createLevel(bool isLastStage){
-    Level newLevel(_gameInfo, isLastStage);
-    return &newLevel;
+    Level* newLevel = new Level(_gameInfo, isLastStage);
+    return newLevel;
 }
