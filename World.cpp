@@ -2,24 +2,21 @@
 
 // Parameterized Constructor
 World::World(int gameInfo[]){
-    _L = gameInfo[0];
-    _N = gameInfo[1];
-    _V = gameInfo[2];
-    _Percentage_of_Coins = gameInfo[3];
-    _Percentage_of_Nothing = gameInfo[4];
-    _Percentage_of_Goombas = gameInfo[5];
-    _Percentage_of_Koopas = gameInfo[6];
-    _Percentage_of_Mushrooms = gameInfo[7];}
+    _gameInfo = gameInfo;
+}
 
 // Destructor
 World::~World(){
 }
 
 void World::createLevels(){
-    _levels = new Level*[_L];
+    int NumLevels = _gameInfo[0];
+
+    // dynamically assign an array of pointers of class 'Level'
+    _levels = new Level*[NumLevels];
 
     // create levels WITH warp unless it is a last stage
-    for (int i = 0; i < _L - 1; i++){
+    for (int i = 0; i < NumLevels - 1; i++){
         _levels[i] = createLevel(false);
     }
 
@@ -28,6 +25,6 @@ void World::createLevels(){
 }
 
 Level* World::createLevel(bool isLastStage){
-    Level newLevel(isLastStage);
+    Level newLevel(_gameInfo, isLastStage);
     return &newLevel;
 }
