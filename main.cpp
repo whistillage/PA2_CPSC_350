@@ -8,15 +8,15 @@ int main(int argc, char* argv[]){
     argv[2]: output file name
     */
     if (argc != 3){
-        cout << "Invalid Arguments!!";
+        cout << "Invalid Arguments. Exit.";
         return -1;
     }
 
     FileProcessor myFileProcessor;
 
-    // if reading input file failed, terminate the program.
+    // if failed to read input file, terminate the program.
     if(!myFileProcessor.readInputFile(argv[1])){
-        cout << "Reading input file unsuccessful. Exit Program." << endl;
+        cout << "Failed to read input file. Exit." << endl;
         return -2;
     }
     

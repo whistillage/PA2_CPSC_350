@@ -1,6 +1,6 @@
 #include "World.h"
 
-// Parameterized Constructor
+// Constructor
 World::World(int gameInfo[]){
     _gameInfo = gameInfo;
 
@@ -13,28 +13,33 @@ World::~World(){
     delete[] _levels;
 }
 
+// call createLevel() and assign pointers of Levels, in _levels
 void World::createLevels(){
     // seed random for construction of class 'Level'
+    // !!! DO NOT MODIFY !!!
     srand(time(0));
 
     int level;
-    // create levels WITH warp unless it is a last stage
+    // create levels WITH warp portal, unless it is a last stage
     for (level = 0; level < _gameInfo[0] - 1; level++){
         _levels[level] = createLevel(false);
     }
 
-    // create a level WITHOUT warp if it is a last stage
+    // create a level WITHOUT warp portal, if it is a last stage
     _levels[level] = createLevel(true);
 }
 
+// create a class 'Level' and return its pointer
+// if it is the last stage, then create WITHOUT a warp, vice versa
 Level* World::createLevel(bool isLastStage){
     Level* newLevel = new Level(_gameInfo, isLastStage);
     return newLevel;
 }
 
+// print all levels on cmd
 void World::printLevels(){
     for (int level = 0; level < _gameInfo[0]; level++){
-        cout << "Level " << level << ": "<< endl;
+        cout << "Level " << level + 1 << ": "<< endl;
         for (int row = 0; row < _gameInfo[1]; row++){
             cout << "Row " << row << ": ";
             for (int col = 0; col < _gameInfo[1]; col++){
@@ -43,7 +48,5 @@ void World::printLevels(){
             cout << endl;
         }
         cout << endl;
-    }
-
-    
-}
+    }    
+}            

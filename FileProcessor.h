@@ -8,16 +8,17 @@ using namespace std;
 
 class FileProcessor {
     private:
-        // the game information is stored.
+        // array of game information
         int _gameInfo[8];
+        
     public:
-        // Default Constructor
+        // Constructor
         FileProcessor();
 
         // Destructor
         ~FileProcessor();
 
-        // save gameInfo from inputFile
+        // read gameInfo from inputFile
         // return if input file was read successfully
         bool readInputFile(const char* inputFile);
 

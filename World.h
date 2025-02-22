@@ -2,31 +2,32 @@
 #define WORLD_H
 
 #include <iostream>
-#include <string>
 #include "Level.h"
 using namespace std;
 
 class World {
     private:
-        // pointer for array of game information
+        // pointer of, an array of game information
         int* _gameInfo;
 
-        // Array of pointers of class 'Level'
+        // array of, pointers of class 'Level'
         Level** _levels;
+
     public:
-        // Parameterized Constructor
+        // Constructor
         World(int gameInfo[]);
 
         // Destructor
         ~World();
 
-        // call createLevel and assign pointers of levels in _levels
+        // call createLevel() and assign pointers of Levels, in _levels
         void createLevels();
 
-        // create a class 'Level' and return its address
-        // if it is a last stage, then create WITHOUT a warp, vice versa
+        // create a class 'Level' and return its pointer
+        // if it is the last stage, then create WITHOUT a warp, vice versa
         Level* createLevel(bool isLastStage);
 
+        // print all levels on cmd
         void printLevels();
 };
 

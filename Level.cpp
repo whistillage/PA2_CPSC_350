@@ -1,27 +1,49 @@
 #include "Level.h"
 
-/*
-x - nothing
-m - a mushroom
-c - a coin
-g - a Goomba
-k - a Koopa Troopa
-b - the level boss
-w - a warp pipe
-H - stands for hero. Mario’s current position.
+/* symbol char of items:
+    x - nothing
+    m - a mushroom
+    c - a coin
+    g - a Goomba
+    k - a Koopa Troopa
+    b - the level boss
+    w - a warp pipe
+    H - stands for hero. Mario’s current position.
 */
+
+// According to the given probability of each item, return a random item(char)
+char Level::getRandomItem(int prob_c, int prob_x, int prob_g, int prob_k, int prob_m){
+    // array of random items(char)
+    char return_arr[] = {'c', 'x', 'g', 'k', 'm'};
+
+    // array of given probabilities of items
+    int prob_arr[] = {prob_c, prob_x, prob_g, prob_k, prob_m};
+
+    // using accumulation of the probabilities
+    // create a random number: 0~99
+    int random_num = rand() % 100;
+    for (int item_idx = 0; item_idx < 5; item_idx++){
+        if (random_num < prob_arr[item_idx]){
+            return return_arr[item_idx];
+        }
+        random_num -= prob_arr[item_idx];
+    }
+
+    /* Below is printed, only when the sum of input probabilities is less than 100. */
+    cout << "The Sum of Input Probabilities is less than 100. Inappropriate Input Error." << endl;
+}
 
 // Constructor
 Level::Level(int* gameInfo, bool isLastStage){
     _dimension = gameInfo[1];
     
-    // dynamically allocate _grid (nXn array)
+    // dynamically allocate _grid
     _grid = new char*[_dimension];
-    for (int i = 0; i < _dimension; i++){
-        _grid[i] = new char[_dimension];
-        for (int j = 0; j < _dimension; j++){
+    for (int row = 0; row < _dimension; row++){
+        _grid[row] = new char[_dimension];
+        for (int col = 0; col < _dimension; col++){
             // fill in _grid with x, m, c, g, k
-            _grid[i][j] = getRandomItem(gameInfo[3], gameInfo[4], gameInfo[5], gameInfo[6], gameInfo[7]);
+            _grid[row][col] = getRandomItem(gameInfo[3], gameInfo[4], gameInfo[5], gameInfo[6], gameInfo[7]);
         }
     }
 
@@ -34,11 +56,11 @@ Level::Level(int* gameInfo, bool isLastStage){
     if (!isLastStage) {
         int warpPipe_RowIndex, warpPipe_ColIndex;
         
-        // warp pipe must not replace the boss
+        // make sure that warp pipe not replace the boss
         do {
             warpPipe_RowIndex = rand() % (_dimension);
             warpPipe_ColIndex = rand() % (_dimension);
-        } while (warpPipe_RowIndex == boss_RowIndex && warpPipe_ColIndex == boss_ColIndex);
+        } while ((warpPipe_RowIndex == boss_RowIndex) && (warpPipe_ColIndex == boss_ColIndex));
 
         _grid[warpPipe_RowIndex][warpPipe_ColIndex] = 'w';
     }
@@ -47,8 +69,8 @@ Level::Level(int* gameInfo, bool isLastStage){
 
 // Destructor
 Level::~Level(){
-    for (int i = 0; i < _dimension; i++){
-        delete[] _grid[i];
+    for (int row = 0; row < _dimension; row++){
+        delete[] _grid[row];
     }
 
     delete[] _grid;
@@ -57,21 +79,4 @@ Level::~Level(){
 // return _grid (nXn array of char)
 char** Level::getGrid(){
     return _grid;
-}
-
-char Level::getRandomItem(int prob_c, int prob_x, int prob_g, int prob_k, int prob_m){
-    char return_arr[] = {'c', 'x', 'g', 'k', 'm'};
-    int prob_arr[] = {prob_c, prob_x, prob_g, prob_k, prob_m};
-
-    // create a random number: 0~99
-    int random_num = rand() % 100;
-    for (int i = 0; i < 5; i++){
-        if (random_num < prob_arr[i]){
-            return return_arr[i];
-        }
-        random_num -= prob_arr[i];
-    }
-
-    /* Below is printed if the sum of input probabilities is less than 100 */
-    cout << "The Sum of Input Probabilities is less than 100. Inappropriate Input Error." << endl;
 }
