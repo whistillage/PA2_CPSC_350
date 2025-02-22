@@ -1,7 +1,7 @@
 #include "Level.h"
 
 // Default Constructor
-Level::Level(bool isLastStage){
+Level::Level(int* gameInfo, bool isLastStage){
 }
 // Destructor
 Level::~Level(){
