@@ -17,7 +17,7 @@ class Level {
         // Destructor
         ~Level();
 
-        Level(int P_coins, int P_nothing, int P_);
+        char** getGrid();
 };
 
 #endif // End of header guard

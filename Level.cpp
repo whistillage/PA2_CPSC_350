@@ -20,3 +20,6 @@ Level::~Level(){
     delete[] _grid;
 }
 
+char** Level::getGrid(){
+    return _grid;
+}
