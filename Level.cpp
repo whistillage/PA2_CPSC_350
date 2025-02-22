@@ -20,11 +20,10 @@ Level::Level(int* gameInfo, bool isLastStage){
     for (int i = 0; i < _dimension; i++){
         _grid[i] = new char[_dimension];
         for (int j = 0; j < _dimension; j++){
-            _grid[i][j] = 'A';
+            // fill in _grid with x, m, c, g, k
+            _grid[i][j] = getRandomItem(gameInfo[3], gameInfo[4], gameInfo[5], gameInfo[6], gameInfo[7]);
         }
     }
-
-    // fill in _grid with x, m, c, g, k
 
     // create the level boss in a random position
     int boss_RowIndex = rand() % (_dimension);
@@ -55,7 +54,24 @@ Level::~Level(){
     delete[] _grid;
 }
 
+// return _grid (nXn array of char)
 char** Level::getGrid(){
     return _grid;
 }
 
+char Level::getRandomItem(int prob_c, int prob_x, int prob_g, int prob_k, int prob_m){
+    char return_arr[] = {'c', 'x', 'g', 'k', 'm'};
+    int prob_arr[] = {prob_c, prob_x, prob_g, prob_k, prob_m};
+
+    // create a random number: 0~99
+    int random_num = rand() % 100;
+    for (int i = 0; i < 5; i++){
+        if (random_num < prob_arr[i]){
+            return return_arr[i];
+        }
+        random_num -= prob_arr[i];
+    }
+
+    /* Below is printed if the sum of input probabilities is less than 100 */
+    cout << "The Sum of Input Probabilities is less than 100. Inappropriate Input Error." << endl;
+}
