@@ -25,7 +25,7 @@ void GameSimulator::initGame(int* gameInfo){
     marioInteraction(mario, world);
     world->printLevel(_levelNum);
 
-    mario->move();
+    mario->move(gameInfo[1]);
     marioInteraction(mario, world);
     world->printLevel(_levelNum);
 

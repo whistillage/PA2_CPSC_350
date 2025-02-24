@@ -34,7 +34,7 @@ class Mario {
         void increaseCoins();
 
         // Mario moves in a random direction
-        void move();
+        void move(int dimension);
 };
 
 #endif // End of header guard
