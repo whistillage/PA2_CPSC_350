@@ -32,7 +32,8 @@ class World {
         // print all levels on cmd
         void printLevels();
 
-        
+        // print the level of LevelNum on cmd
+        void printLevel(int LevelNum);
 };
 
 #endif // End of header guard

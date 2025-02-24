@@ -42,7 +42,7 @@ Level* World::getLevel(int levelNum){
 
 // print all levels on cmd
 void World::printLevels(){
-    cout << "Build a world! Below are the levels" << endl;
+    cout << "Build a world! Each Level below: " << endl;
     for (int level = 0; level < _gameInfo[0]; level++){
         cout << "Level " << level + 1 << ": "<< endl;
         for (int row = 0; row < _gameInfo[1]; row++){
@@ -56,3 +56,16 @@ void World::printLevels(){
     }
     cout << "============================" << endl; 
 }            
+
+// print the level of LevelNum on cmd
+void World::printLevel(int LevelNum){
+    cout << "Current Level is " << LevelNum + 1 << "." << endl;
+    for (int row = 0; row < _gameInfo[1]; row++){
+        cout << "Row " << row << ": ";
+        for (int col = 0; col < _gameInfo[1]; col++){
+            cout << _levels[LevelNum]->getGrid()[row][col] << " ";
+        }
+        cout << endl;
+    }
+    cout << "----------------------------" << endl;
+}

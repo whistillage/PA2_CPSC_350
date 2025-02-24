@@ -22,6 +22,7 @@ void GameSimulator::initGame(int* gameInfo){
     mario->setPosition(randXpos, randYpos);
 
     marioInteraction(mario, world);
+    world->printLevel(_levelNum);
 
     delete mario;
     delete world;
