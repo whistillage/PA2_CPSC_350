@@ -15,12 +15,8 @@ void GameSimulator::initGame(int* gameInfo){
     world->createLevels();
     world->printLevels();
 
-    Mario* mario = new Mario(gameInfo[2]);
-
     // set Mario in a random position in lev 0
-    int randXpos = rand() % (gameInfo[1]);
-    int randYpos = rand() % (gameInfo[1]);
-    mario->setPosition(randXpos, randYpos);
+    Mario* mario = new Mario(gameInfo[1], gameInfo[2]);
 
     marioInteraction(mario, world);
     world->printLevel(_levelNum);
@@ -39,12 +35,16 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
 
     // grid of current Level
     char** grid = world->getLevel(_levelNum)->getGrid();
+
+    // according to the item in the position,
     switch (grid[marioPosition[0]][marioPosition[1]]){
         case 'x':
             cout << "Mario is on x!" << endl;
             break;
         case 'm':
             cout << "Mario is on m!" << endl;
+            mario->increasePowerLev();
+            grid[marioPosition[0]][marioPosition[1]] = 'x';
             break;
         case 'c':
             cout << "Mario is on c!" << endl;

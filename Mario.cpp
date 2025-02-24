@@ -1,17 +1,20 @@
 #include "Mario.h"
 
 // Constructor
-Mario::Mario(int lives){
+Mario::Mario(int dimension, int lives){
     _lives = lives;
+    _coins = 0;
+    _powerLev = 0;
+    setRandPosition(dimension);
 }
 
 // Destructor
 Mario::~Mario(){
 }
 
-void Mario::setPosition(int xPos, int yPos){
-    _position[0] = xPos;
-    _position[1] = yPos;
+void Mario::setRandPosition(int dimension){
+    _position[0] = rand() % (dimension);
+    _position[1] = rand() % (dimension);
 }
 
 int* Mario::getPosition(){
@@ -21,6 +24,15 @@ int* Mario::getPosition(){
 // increase _coins by 1
 void Mario::increaseCoins(){
     _coins += 1;
+}
+
+void Mario::increasePowerLev(){
+    _powerLev += 1;
+    
+    // power level does not extend 2
+    if (_powerLev > 2){
+        _powerLev = 2;
+    }
 }
 
 // Mario moves in a random direction
