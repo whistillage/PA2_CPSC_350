@@ -7,6 +7,8 @@ using namespace std;
 
 class GameSimulator {
     private:
+        // current Level Number
+        int _levelNum;
 
     public:
         // Constructor
@@ -16,6 +18,8 @@ class GameSimulator {
         ~GameSimulator();
 
         void initGame(int* gameInfo);
+
+        void marioInteraction(Mario* mario, World* world);
 };
 
 #endif // End of header guard
