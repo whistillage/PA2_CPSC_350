@@ -9,10 +9,12 @@ class Mario {
         int _lives;
 
         // 20 coins = 1 life
-        int coins = 0;
+        int _coins = 0;
 
         // power level: 0, 1, or 2
-        int power_lev = 0;
+        int _powerLev = 0;
+
+        //
     public:
         // Constructor
         Mario(int lives);

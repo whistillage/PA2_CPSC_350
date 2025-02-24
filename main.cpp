@@ -1,5 +1,6 @@
 #include "FileProcessor.h"
 #include "World.h"
+#include "GameSimulator.h"
 using namespace std;
 
 int main(int argc, char* argv[]){
@@ -19,10 +20,9 @@ int main(int argc, char* argv[]){
         cout << "Failed to read input file. Exit." << endl;
         return -2;
     }
-    
-    World myWorld(myFileProcessor.getGameInfo());
-    myWorld.createLevels();
-    myWorld.printLevels();
+
+    GameSimulator myGameSimulator;
+    myGameSimulator.initGame(myFileProcessor.getGameInfo());
 
     return 0;
 }
