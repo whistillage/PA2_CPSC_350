@@ -2,6 +2,7 @@
 #define GAMESIMULATOR_H
 
 #include "World.h"
+#include "Mario.h"
 using namespace std;
 
 class GameSimulator {

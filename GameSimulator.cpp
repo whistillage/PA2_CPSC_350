@@ -11,7 +11,12 @@ GameSimulator::~GameSimulator(){
 }
 
 void GameSimulator::initGame(int* gameInfo){
-    World myWorld(gameInfo);
-    myWorld.createLevels();
-    myWorld.printLevels();
+    World* world = new World(gameInfo);
+    world->createLevels();
+    world->printLevels();
+
+    Mario* mario = new Mario(gameInfo[2]);
+
+    delete mario;
+    delete world;
 }

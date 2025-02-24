@@ -13,16 +13,18 @@ int main(int argc, char* argv[]){
         return -1;
     }
 
-    FileProcessor myFileProcessor;
+    FileProcessor* fileProcessor = new FileProcessor();
 
     // if failed to read input file, terminate the program.
-    if(!myFileProcessor.readInputFile(argv[1])){
+    if(!fileProcessor->readInputFile(argv[1])){
         cout << "Failed to read input file. Exit." << endl;
         return -2;
     }
 
-    GameSimulator myGameSimulator;
-    myGameSimulator.initGame(myFileProcessor.getGameInfo());
+    GameSimulator* gameSimulator = new GameSimulator();
+    gameSimulator->initGame(fileProcessor->getGameInfo());
 
+    delete gameSimulator;
+    delete fileProcessor;
     return 0;
 }
