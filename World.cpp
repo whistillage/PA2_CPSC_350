@@ -36,8 +36,13 @@ Level* World::createLevel(bool isLastStage){
     return newLevel;
 }
 
+Level* World::getLevel(int levelNum){
+    return _levels[levelNum];
+}
+
 // print all levels on cmd
 void World::printLevels(){
+    cout << "Build a world! Below are the levels" << endl;
     for (int level = 0; level < _gameInfo[0]; level++){
         cout << "Level " << level + 1 << ": "<< endl;
         for (int row = 0; row < _gameInfo[1]; row++){
@@ -48,5 +53,6 @@ void World::printLevels(){
             cout << endl;
         }
         cout << endl;
-    }    
+    }
+    cout << "============================" << endl; 
 }            
