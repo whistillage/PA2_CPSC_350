@@ -14,13 +14,17 @@ class Mario {
         // power level: 0, 1, or 2
         int _powerLev = 0;
 
-        //
+        // position of Mario in a level
+        int _position[2];
     public:
         // Constructor
         Mario(int lives);
 
         // Destructor
         ~Mario();
+
+        void setPosition(int xPos, int yPos);
+        int* getPosition();
 };
 
 #endif // End of header guard

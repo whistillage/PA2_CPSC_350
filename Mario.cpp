@@ -9,3 +9,11 @@ Mario::Mario(int lives){
 Mario::~Mario(){
 }
 
+void Mario::setPosition(int xPos, int yPos){
+    _position[0] = xPos;
+    _position[1] = yPos;
+}
+
+int* Mario::getPosition(){
+    return _position;
+}
