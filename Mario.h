@@ -23,8 +23,14 @@ class Mario {
         // Destructor
         ~Mario();
 
+        // set _position[2] into [xPos, yPos]
         void setPosition(int xPos, int yPos);
+
+        // get _position[2]
         int* getPosition();
+
+        // increase _coins by 1
+        void increaseCoins();
 };
 
 #endif // End of header guard

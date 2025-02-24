@@ -17,3 +17,8 @@ void Mario::setPosition(int xPos, int yPos){
 int* Mario::getPosition(){
     return _position;
 }
+
+// increase _coins by 1
+void Mario::increaseCoins(){
+    _coins += 1;
+}
