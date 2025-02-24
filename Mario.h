@@ -1,6 +1,7 @@
 #ifndef MARIO_H // Header guard to prevent multiple inclusions
 #define MARIO_H
 
+#include <cstdlib>
 using namespace std;
 
 class Mario {
@@ -31,6 +32,9 @@ class Mario {
 
         // increase _coins by 1
         void increaseCoins();
+
+        // Mario moves in a random direction
+        void move();
 };
 
 #endif // End of header guard
