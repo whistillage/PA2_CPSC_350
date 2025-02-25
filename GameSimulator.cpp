@@ -18,12 +18,16 @@ void GameSimulator::initGame(int* gameInfo){
     // set Mario in a random position in lev 0
     Mario* mario = new Mario(gameInfo[1], gameInfo[2]);
 
-    marioInteraction(mario, world);
-    world->printLevel(_levelNum);
-
-    mario->move(gameInfo[1]);
-    marioInteraction(mario, world);
-    world->printLevel(_levelNum);
+    while (!mario->isGameOver()){
+        world->printLevel(_levelNum);
+        marioInteraction(mario, world);
+        if (mario->isDead()){
+            mario->newLife();
+        }
+        else{
+            mario->move(gameInfo[1]);
+        }
+    }
 
     delete mario;
     delete world;
@@ -39,29 +43,43 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
     // according to the item in the position,
     switch (grid[marioPosition[0]][marioPosition[1]]){
         case 'x':
-            cout << "Mario is on x!" << endl;
+            cout << "Nothing!" << endl;
             break;
         case 'm':
-            cout << "Mario is on m!" << endl;
+            cout << "Mushroom!" << endl;
             mario->increasePowerLev();
             grid[marioPosition[0]][marioPosition[1]] = 'x';
             break;
         case 'c':
-            cout << "Mario is on c!" << endl;
+            cout << "Coin!" << endl;
             mario->increaseCoins();
             grid[marioPosition[0]][marioPosition[1]] = 'x';
             break;
-        case 'g':
-            cout << "Mario is on g!" << endl;
+        case 'g': {
+            cout << "Goomba!" << endl;
+
+            // random integer: 0 ~ 9
+            int randNum = rand() % 10;
+
+            // if mario wins in prob of 80%,
+            if (randNum < 8){
+                grid[marioPosition[0]][marioPosition[1]] = 'x';
+            }
+            // if mario loses in prob of 20%,
+            else{
+                mario->getDamage();
+            }
+
             break;
+        }
         case 'k':
-            cout << "Mario is on k!" << endl;
+            cout << "Koopa!" << endl;
             break;
         case 'b':
-            cout << "Mario is on b!" << endl;
+            cout << "Boss!" << endl;
             break;
         case 'w':
-            cout << "Mario is on w!" << endl;
+            cout << "Warp Pipe!" << endl;
             break;
     }
 }

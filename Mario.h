@@ -17,6 +17,12 @@ class Mario {
 
         // position of Mario in a level
         int _position[2];
+
+        // 
+        bool _dead;
+
+        //
+        bool _gameOver;
     public:
         // Constructor
         Mario(int dimension, int lives);
@@ -33,10 +39,20 @@ class Mario {
         // increase _coins by 1
         void increaseCoins();
 
+        // increase _powerLev by 1
         void increasePowerLev();
+
+        // when mario loses to Goomba or Koopa
+        void getDamage();
+
+        void newLife();
 
         // Mario moves in a random direction
         void move(int dimension);
+
+        bool isDead();
+
+        bool isGameOver();
 };
 
 #endif // End of header guard

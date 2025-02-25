@@ -6,6 +6,7 @@ Mario::Mario(int dimension, int lives){
     _coins = 0;
     _powerLev = 0;
     setRandPosition(dimension);
+    _dead = false;
 }
 
 // Destructor
@@ -33,6 +34,25 @@ void Mario::increasePowerLev(){
     if (_powerLev > 2){
         _powerLev = 2;
     }
+}
+
+void Mario::getDamage(){
+    if (_powerLev > 0){
+        _powerLev -= 1;
+    }
+    else{   // if (_powerLev == 0)
+        if (_lives > 0){
+            _dead = true;
+        }
+        else{   // if (_lives == 0)
+            _gameOver = true;
+        }
+    }
+}
+
+void Mario::newLife(){
+    _lives -= 1;
+    _dead = false;
 }
 
 // Mario moves in a random direction
@@ -67,4 +87,12 @@ void Mario::move(int dimension){
             }
             break;
     }
+}
+
+bool Mario::isDead(){
+    return _dead;
+}
+
+bool Mario::isGameOver(){
+    return _gameOver;
 }
