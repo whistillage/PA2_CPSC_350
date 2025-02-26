@@ -18,10 +18,10 @@ class Mario {
         // position of Mario in a level
         int _position[2];
 
-        // 
+        // true when get damage in state of power level 0
         bool _dead;
 
-        //
+        // true when get damage in state of power level 0 and life 0
         bool _gameOver;
     public:
         // Constructor

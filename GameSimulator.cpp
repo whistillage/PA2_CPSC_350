@@ -61,7 +61,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
             // random integer: 0 ~ 9
             int randNum = rand() % 10;
 
-            // if mario wins in prob of 80%,
+            // if mario defeats in prob of 80%,
             if (randNum < 8){
                 grid[marioPosition[0]][marioPosition[1]] = 'x';
             }
@@ -69,12 +69,24 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
             else{
                 mario->getDamage();
             }
-
             break;
         }
-        case 'k':
+        case 'k' : {
             cout << "Koopa!" << endl;
+
+            // random integer: 0 ~ 99
+            int randNum = rand() % 100;
+
+            // if mario defeats in prob of 65%,
+            if (randNum < 65){
+                grid[marioPosition[0]][marioPosition[1]] = 'x';
+            }
+            // if mario loses in prob of 35%,
+            else{
+                mario->getDamage();
+            }
             break;
+        }
         case 'b':
             cout << "Boss!" << endl;
             break;
