@@ -6,6 +6,7 @@ Mario::Mario(int dimension, int lives){
     _coins = 0;
     _powerLev = 0;
     setRandPosition(dimension);
+    _defeatStreak = 0;
     _dead = false;
 }
 
@@ -52,6 +53,7 @@ void Mario::getDamage(){
 
 void Mario::newLife(){
     _lives -= 1;
+    _defeatStreak = 0;
     _dead = false;
 }
 
@@ -86,6 +88,15 @@ void Mario::move(int dimension){
                 _position[1] = dimension - 1;
             }
             break;
+    }
+}
+
+void Mario::defeatEnemy(){
+    _defeatStreak += 1;
+    // - if Mario defeats 7 enemies on the same life, he earns another life.
+    if (_defeatStreak == 7){
+        _lives += 1;
+        _defeatStreak = 0;
     }
 }
 

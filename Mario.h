@@ -18,6 +18,9 @@ class Mario {
         // position of Mario in a level
         int _position[2];
 
+        // # of enemies Mario defeated on the same life
+        int _defeatStreak;
+
         // true when get damage in state of power level 0
         bool _dead;
 
@@ -49,6 +52,8 @@ class Mario {
 
         // Mario moves in a random direction
         void move(int dimension);
+
+        void defeatEnemy();
 
         bool isDead();
 

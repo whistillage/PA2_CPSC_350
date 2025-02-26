@@ -63,6 +63,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
 
             // if mario defeats in prob of 80%,
             if (randNum < 8){
+                mario->defeatEnemy();
                 grid[marioPosition[0]][marioPosition[1]] = 'x';
             }
             // if mario loses in prob of 20%,
@@ -79,6 +80,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
 
             // if mario defeats in prob of 65%,
             if (randNum < 65){
+                mario->defeatEnemy();
                 grid[marioPosition[0]][marioPosition[1]] = 'x';
             }
             // if mario loses in prob of 35%,
