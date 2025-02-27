@@ -10,7 +10,10 @@ GameSimulator::~GameSimulator(){
 
 }
 
-void GameSimulator::initGame(int* gameInfo){
+int GameSimulator::initGame(int* gameInfo){
+    // integer variable for return value
+    int returnNum = -1;
+
     World* world = new World(gameInfo);
     world->createLevels();
     world->printLevels();
@@ -18,7 +21,7 @@ void GameSimulator::initGame(int* gameInfo){
     // set Mario in a random position in lev 0
     Mario* mario = new Mario(gameInfo[1], gameInfo[2]);
 
-    while (!mario->isGameOver()){
+    while (!mario->isGameOver() || !mario->isWon()){
         world->printLevel(_levelNum);
         marioInteraction(mario, world);
 
@@ -36,12 +39,22 @@ void GameSimulator::initGame(int* gameInfo){
         }
         // if mario is not dead, move into a new position.
         else{
+            cout << "moving..." << endl;
             mario->move(gameInfo[1]);
         }
     }
 
+    if (mario->isWon()){
+        returnNum = 1;
+    }
+    if (mario->isGameOver()){
+        returnNum = 0;
+    }
+
     delete mario;
     delete world;
+
+    return returnNum;
 }
 
 void GameSimulator::marioInteraction(Mario* mario, World* world){
@@ -53,19 +66,22 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
 
     // according to the item in the position,
     switch (grid[marioPosition[0]][marioPosition[1]]){
-        case 'x':
+        case 'x': {
             cout << "Nothing!" << endl;
             break;
-        case 'm':
+        }
+        case 'm' : {
             cout << "Mushroom!" << endl;
             mario->increasePowerLev();
             grid[marioPosition[0]][marioPosition[1]] = 'x';
             break;
-        case 'c':
+        }
+        case 'c': {
             cout << "Coin!" << endl;
             mario->increaseCoins();
             grid[marioPosition[0]][marioPosition[1]] = 'x';
             break;
+        }
         case 'g': {
             cout << "Goomba!" << endl;
 

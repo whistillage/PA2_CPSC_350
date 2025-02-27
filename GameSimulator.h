@@ -17,7 +17,9 @@ class GameSimulator {
         // Destructor
         ~GameSimulator();
 
-        void initGame(int* gameInfo);
+        // if win, return 1
+        // if gameover, return 0
+        int initGame(int* gameInfo);
 
         void marioInteraction(Mario* mario, World* world);
 };
