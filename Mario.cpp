@@ -17,7 +17,7 @@ Mario::~Mario(){
 void Mario::setRandPosition(int dimension){
     _position[0] = rand() % (dimension);
     _position[1] = rand() % (dimension);
-    
+
     // finished warping.
     _warping = false;
 }
@@ -106,6 +106,7 @@ void Mario::defeatEnemy(){
 
 void Mario::winGame(){
     _win = true;
+    cout << "Game Won!" << endl;
 }
 
 void Mario::warp(){
@@ -122,4 +123,8 @@ bool Mario::isDead(){
 
 bool Mario::isGameOver(){
     return _gameOver;
+}
+
+bool Mario::isWon(){
+    return _win;
 }

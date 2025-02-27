@@ -2,6 +2,7 @@
 #define MARIO_H
 
 #include <cstdlib>
+#include <iostream>
 using namespace std;
 
 class Mario {
@@ -70,6 +71,8 @@ class Mario {
         bool isDead();
 
         bool isGameOver();
+
+        bool isWon();
 };
 
 #endif // End of header guard
