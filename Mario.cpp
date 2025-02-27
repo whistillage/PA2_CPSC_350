@@ -54,7 +54,7 @@ void Mario::getDamage(int damage){
     }
 }
 
-void Mario::newLife(){
+void Mario::revive(){
     _lives -= 1;
     _powerLev = 0;
     _defeatStreak = 0;
@@ -106,7 +106,6 @@ void Mario::defeatEnemy(){
 
 void Mario::winGame(){
     _win = true;
-    cout << "Game Won!" << endl;
 }
 
 void Mario::warp(){

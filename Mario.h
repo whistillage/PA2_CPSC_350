@@ -55,7 +55,7 @@ class Mario {
         // if mario loses to Goomba, Koopa, or Boss
         void getDamage(int damage);
 
-        void newLife();
+        void revive();
 
         // Mario moves in a random direction
         void move(int dimension);
