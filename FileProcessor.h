@@ -8,9 +8,6 @@ using namespace std;
 
 class FileProcessor {
     private:
-        // array of game information
-        int _gameInfo[8];
-
         // variable for input File
         ifstream _inFile;
 
@@ -24,14 +21,14 @@ class FileProcessor {
         // Destructor
         ~FileProcessor();
 
-        // read gameInfo from inputFile
+        // assign input data -> gameInfo
         // return true if files were read successfully
-        bool readFiles(const char* inputFile, const char* outputFile);
+        bool readFiles(const char* inputFile, const char* outputFile, int* gameInfo);
 
+        void writeOutputFile(string text);
+
+        // close inputFile and outputFile
         void closeFiles();
-
-        // return the pointer of _gameInfo
-        int* getGameInfo();
 };
 
 #endif // End of header guard

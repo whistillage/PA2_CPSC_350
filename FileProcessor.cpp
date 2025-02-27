@@ -20,7 +20,7 @@ FileProcessor::~FileProcessor() {
     Line # 7 is the approximate percentage of the positions in each level with Koopas (a positive integer)
     Line # 8 is the approximate percentage of the positions in each level with mushrooms (a positive integer)
 */
-bool FileProcessor::readFiles(const char* inputFile, const char* outputFile){
+bool FileProcessor::readFiles(const char* inputFile, const char* outputFile, int* gameInfo){
     _inFile.open(inputFile);
     _outFile.open(outputFile);
 
@@ -39,18 +39,17 @@ bool FileProcessor::readFiles(const char* inputFile, const char* outputFile){
     for (int i = 0; i < 8; i++){
         string line;
         getline(_inFile, line);
-        _gameInfo[i] = stoi(line);
+        gameInfo[i] = stoi(line);
     }
     
     return true;
 }
 
+void FileProcessor::writeOutputFile(string text){
+    _outFile << text << endl;
+}
+
 void FileProcessor::closeFiles(){
     _inFile.close();
     _outFile.close();
-}
-
-// return the pointer of _gameInfo
-int* FileProcessor::getGameInfo(){
-    return _gameInfo;
 }

@@ -2,7 +2,7 @@
 
 // Constructor
 GameSimulator::GameSimulator(){
-    _levelNum = 0;
+    _curLevelNum = 0;
 }
 
 // Destructor
@@ -10,26 +10,44 @@ GameSimulator::~GameSimulator(){
 
 }
 
-int GameSimulator::initGame(int* gameInfo){
+void GameSimulator::initGame(const char* inputFile, const char* outputFile){
+    FileProcessor* fileProcessor = new FileProcessor();
+
+    // if failed to read input file, terminate the program.
+    if(!fileProcessor->readFiles(inputFile, outputFile, _gameInfo)){
+        cout << "Failed to read files. Exit." << endl;
+        return;
+    }
+
+    if (playGame()){    // if won
+        fileProcessor->writeOutputFile("Win!!!");
+    }
+    else{               // if game over
+        fileProcessor->writeOutputFile("Lose...");
+    }
+    fileProcessor->closeFiles();
+}
+
+int GameSimulator::playGame(){
     // integer variable for return value
     int returnNum = -1;
 
-    World* world = new World(gameInfo);
+    World* world = new World(_gameInfo);
     world->createLevels();
     world->printLevels();
 
     // set Mario in a random position in lev 0
-    Mario* mario = new Mario(gameInfo[1], gameInfo[2]);
+    Mario* mario = new Mario(_gameInfo[1], _gameInfo[2]);
 
     while (!mario->isGameOver() || !mario->isWon()){
-        world->printLevel(_levelNum);
+        world->printLevel(_curLevelNum);
         marioInteraction(mario, world);
 
         // if mario is warping to next level, increase levelNum and move to random position.
         // skip revival or moving.
         if (mario->isWarping()){
-            _levelNum += 1;
-            mario->setRandPosition(gameInfo[1]);
+            _curLevelNum += 1;
+            mario->setRandPosition(_gameInfo[1]);
             continue;
         }
 
@@ -39,7 +57,7 @@ int GameSimulator::initGame(int* gameInfo){
         }
         // if mario is not dead, move into a new position.
         else{
-            mario->move(gameInfo[1]);
+            mario->move(_gameInfo[1]);
         }
     }
 
@@ -61,7 +79,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
     cout << "Mario Position: " << marioPosition[0] << ", " << marioPosition[1] << endl;
 
     // grid of current Level
-    char** grid = world->getLevel(_levelNum)->getGrid();
+    char** grid = world->getLevel(_curLevelNum)->getGrid();
 
     // according to the item in the position,
     switch (grid[marioPosition[0]][marioPosition[1]]){
@@ -124,7 +142,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
             // if mario defeats in prob of 50%,
             if (randNum < 50){
                 // if mario is in the last level,
-                if (_levelNum == world->getLastLevelNum()){
+                if (_curLevelNum == world->getLastLevelNum()){
                     mario->winGame();
                 }
                 else{

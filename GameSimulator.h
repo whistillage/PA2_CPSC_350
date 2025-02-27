@@ -3,12 +3,16 @@
 
 #include "World.h"
 #include "Mario.h"
+#include "FileProcessor.h"
 using namespace std;
 
 class GameSimulator {
     private:
         // current Level Number
-        int _levelNum;
+        int _curLevelNum;
+
+        // array of game information
+        int _gameInfo[8];
 
     public:
         // Constructor
@@ -19,7 +23,11 @@ class GameSimulator {
 
         // if win, return 1
         // if gameover, return 0
-        int initGame(int* gameInfo);
+        void initGame(const char* inputFile, const char* outputFile);
+
+        // if win, return 1
+        // if gameover, return 0
+        int playGame();
 
         void marioInteraction(Mario* mario, World* world);
 };
