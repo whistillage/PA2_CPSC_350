@@ -37,9 +37,9 @@ void Mario::increasePowerLev(){
     }
 }
 
-void Mario::getDamage(){
-    if (_powerLev > 0){
-        _powerLev -= 1;
+void Mario::getDamage(int damage){
+    if (_powerLev >= damage){
+        _powerLev -= damage;
     }
     else{   // if (_powerLev == 0)
         if (_lives > 0){
@@ -53,6 +53,7 @@ void Mario::getDamage(){
 
 void Mario::newLife(){
     _lives -= 1;
+    _powerLev = 0;
     _defeatStreak = 0;
     _dead = false;
 }
@@ -98,6 +99,10 @@ void Mario::defeatEnemy(){
         _lives += 1;
         _defeatStreak = 0;
     }
+}
+
+bool Mario::isWarping(){
+    return _warping;
 }
 
 bool Mario::isDead(){

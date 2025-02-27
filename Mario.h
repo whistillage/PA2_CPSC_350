@@ -21,6 +21,9 @@ class Mario {
         // # of enemies Mario defeated on the same life
         int _defeatStreak;
 
+        // true when mario defeats the boss or encounters warp pipe
+        bool _warping;
+
         // true when get damage in state of power level 0
         bool _dead;
 
@@ -45,8 +48,8 @@ class Mario {
         // increase _powerLev by 1
         void increasePowerLev();
 
-        // when mario loses to Goomba or Koopa
-        void getDamage();
+        // if mario loses to Goomba, Koopa, or Boss
+        void getDamage(int damage);
 
         void newLife();
 
@@ -54,6 +57,8 @@ class Mario {
         void move(int dimension);
 
         void defeatEnemy();
+
+        bool isWarping();
 
         bool isDead();
 
