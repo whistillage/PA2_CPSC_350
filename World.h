@@ -29,6 +29,9 @@ class World {
 
         Level* getLevel(int levelNum);
 
+        // return # of levels
+        int getLastLevel();
+
         // print all levels on cmd
         void printLevels();
 

@@ -40,6 +40,11 @@ Level* World::getLevel(int levelNum){
     return _levels[levelNum];
 }
 
+// return # of levels
+int World::getLastLevel(){
+    return _gameInfo[0];
+}
+
 // print all levels on cmd
 void World::printLevels(){
     cout << "Build a world! Each Level below: " << endl;
