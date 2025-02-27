@@ -41,8 +41,8 @@ Level* World::getLevel(int levelNum){
 }
 
 // return # of levels
-int World::getLastLevel(){
-    return _gameInfo[0];
+int World::getLastLevelNum(){
+    return _gameInfo[0] - 1;
 }
 
 // print all levels on cmd

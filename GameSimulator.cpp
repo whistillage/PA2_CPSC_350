@@ -35,11 +35,10 @@ int GameSimulator::initGame(int* gameInfo){
 
         // if mario is dead, get a new life in the same position.
         if (mario->isDead()){
-            mario->newLife();
+            mario->revive();
         }
         // if mario is not dead, move into a new position.
         else{
-            cout << "moving..." << endl;
             mario->move(gameInfo[1]);
         }
     }
@@ -125,7 +124,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
             // if mario defeats in prob of 50%,
             if (randNum < 50){
                 // if mario is in the last level,
-                if (_levelNum == world->getLastLevel()){
+                if (_levelNum == world->getLastLevelNum()){
                     mario->winGame();
                 }
                 else{
@@ -140,6 +139,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
         }
         case 'w':
             cout << "Warp Pipe!" << endl;
+            mario->warp();
             break;
     }
 }
