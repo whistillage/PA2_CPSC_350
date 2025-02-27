@@ -24,6 +24,9 @@ class Mario {
         // true when mario defeats the boss or encounters warp pipe
         bool _warping;
 
+        // true when mario defeats the boss in the last stage
+        bool _win;
+
         // true when get damage in state of power level 0
         bool _dead;
 
@@ -57,6 +60,10 @@ class Mario {
         void move(int dimension);
 
         void defeatEnemy();
+
+        void winGame();
+
+        void warp();
 
         bool isWarping();
 

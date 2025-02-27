@@ -101,6 +101,14 @@ void Mario::defeatEnemy(){
     }
 }
 
+void Mario::winGame(){
+    _win = true;
+}
+
+void Mario::warp(){
+    _warping = true;
+}
+
 bool Mario::isWarping(){
     return _warping;
 }
