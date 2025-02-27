@@ -17,6 +17,9 @@ Mario::~Mario(){
 void Mario::setRandPosition(int dimension){
     _position[0] = rand() % (dimension);
     _position[1] = rand() % (dimension);
+    
+    // finished warping.
+    _warping = false;
 }
 
 int* Mario::getPosition(){

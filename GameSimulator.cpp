@@ -21,9 +21,20 @@ void GameSimulator::initGame(int* gameInfo){
     while (!mario->isGameOver()){
         world->printLevel(_levelNum);
         marioInteraction(mario, world);
+
+        // if mario is warping to next level, increase levelNum and move to random position.
+        // skip revival or moving.
+        if (mario->isWarping()){
+            _levelNum += 1;
+            mario->setRandPosition(gameInfo[1]);
+            continue;
+        }
+
+        // if mario is dead, get a new life in the same position.
         if (mario->isDead()){
             mario->newLife();
         }
+        // if mario is not dead, move into a new position.
         else{
             mario->move(gameInfo[1]);
         }
@@ -97,7 +108,13 @@ void GameSimulator::marioInteraction(Mario* mario, World* world){
 
             // if mario defeats in prob of 50%,
             if (randNum < 50){
-                grid[marioPosition[0]][marioPosition[1]] = 'x';
+                // if mario is in the last level,
+                if (_levelNum == world->getLastLevel()){
+                    mario->winGame();
+                }
+                else{
+                    mario->warp();
+                }
             }
             // if mario loses in prob of 50%,
             else{
