@@ -1,12 +1,14 @@
 #include "Mario.h"
 
 // Constructor
-Mario::Mario(int dimension, int lives){
+Mario::Mario(int lives){
     _lives = lives;
     _coins = 0;
     _powerLev = 0;
-    setRandPosition(dimension);
     _defeatStreak = 0;
+    _warping = false;
+    _win = false;
+    _gameOver = false;
     _dead = false;
 }
 
@@ -14,16 +16,24 @@ Mario::Mario(int dimension, int lives){
 Mario::~Mario(){
 }
 
-void Mario::setRandPosition(int dimension){
+// set Mario in a random position
+void Mario::setRandPosition(int dimension, FileProcessor* fileProcessor, int curLevelNum){
     _position[0] = rand() % (dimension);
     _position[1] = rand() % (dimension);
 
+    fileProcessor->writeOutputFile("Mario is starting Level " + to_string(curLevelNum + 1) + " in position: (" + to_string(_position[0]) + ", " + to_string(_position[1]) + ")");
+    fileProcessor->writeOutputFile("================");
     // finished warping.
     _warping = false;
 }
 
 int* Mario::getPosition(){
     return _position;
+}
+
+// get _powerLev
+int Mario::getPowerLev(){
+    return _powerLev;
 }
 
 // increase _coins by 1

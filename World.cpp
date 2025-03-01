@@ -6,19 +6,22 @@ World::World(int gameInfo[]){
 
     // dynamically assign an array of pointers of class 'Level'
     _levels = new Level*[_gameInfo[0]];
+
+    // seed random for construction of class 'Level'
+    // !!! DO NOT MODIFY !!!
+    srand(time(0));
 }
 
 // Destructor
 World::~World(){
+    for (int i = 0; i < _gameInfo[0]; i++){
+        delete _levels[i];
+    }
     delete[] _levels;
 }
 
 // call createLevel() and assign pointers of Levels, in _levels
 void World::createLevels(){
-    // seed random for construction of class 'Level'
-    // !!! DO NOT MODIFY !!!
-    srand(time(0));
-
     int level;
     // create levels WITH warp portal, unless it is a last stage
     for (level = 0; level < _gameInfo[0] - 1; level++){
@@ -40,37 +43,36 @@ Level* World::getLevel(int levelNum){
     return _levels[levelNum];
 }
 
-// return # of levels
-int World::getLastLevelNum(){
-    return _gameInfo[0] - 1;
-}
-
-// print all levels on cmd
-void World::printLevels(){
-    cout << "Build a world! Each Level below: " << endl;
+// print all levels
+void World::printLevels(FileProcessor* fileProcessor){
+    fileProcessor->writeOutputFile("Print the initial world!");
     for (int level = 0; level < _gameInfo[0]; level++){
-        cout << "Level " << level + 1 << ": "<< endl;
+        fileProcessor->writeOutputFile("");
+        fileProcessor->writeOutputFile("Level " + to_string(level + 1) + ": ");
         for (int row = 0; row < _gameInfo[1]; row++){
-            cout << "Row " << row << ": ";
+            string line = "";
             for (int col = 0; col < _gameInfo[1]; col++){
-                cout << _levels[level]->getGrid()[row][col] << " ";
+                line.push_back(_levels[level]->getGrid()[row][col]);
             }
-            cout << endl;
+            fileProcessor->writeOutputFile(line);
         }
-        cout << endl;
     }
-    cout << "============================" << endl; 
+    fileProcessor->writeOutputFile("");
+    fileProcessor->writeOutputFile("#######################################");
 }            
 
-// print the level of LevelNum on cmd
-void World::printLevel(int LevelNum){
-    cout << "Current Level is " << LevelNum + 1 << "." << endl;
+// print the level of LevelNum, with mario in position[2]
+void World::printLevelwithMario(int LevelNum, int* position, FileProcessor* fileProcessor){
     for (int row = 0; row < _gameInfo[1]; row++){
-        cout << "Row " << row << ": ";
+        string line = "";
         for (int col = 0; col < _gameInfo[1]; col++){
-            cout << _levels[LevelNum]->getGrid()[row][col] << " ";
+            line.push_back(_levels[LevelNum]->getGrid()[row][col]);
         }
-        cout << endl;
+        // mark 'H' on Mario's current position
+        if (row == position[0]){
+            line[position[1]] = 'H';
+        }
+        fileProcessor->writeOutputFile(line);
     }
-    cout << "----------------------------" << endl;
+    fileProcessor->writeOutputFile("================");
 }

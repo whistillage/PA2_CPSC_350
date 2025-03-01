@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include "FileProcessor.h"
 using namespace std;
 
 class Mario {
@@ -28,23 +29,27 @@ class Mario {
         // true when mario defeats the boss in the last stage
         bool _win;
 
+        // true when get damage in state of power level 0 and life 0
+        bool _gameOver;
+
         // true when get damage in state of power level 0
         bool _dead;
 
-        // true when get damage in state of power level 0 and life 0
-        bool _gameOver;
     public:
         // Constructor
-        Mario(int dimension, int lives);
+        Mario(int lives);
 
         // Destructor
         ~Mario();
 
-        // set _position[2] into [xPos, yPos]
-        void setRandPosition(int dimension);
+        // set Mario in a random position
+        void setRandPosition(int dimension, FileProcessor* fileProcessor, int curLevelNum);
 
         // get _position[2]
         int* getPosition();
+
+        // get _powerLev
+        int getPowerLev();
 
         // increase _coins by 1
         void increaseCoins();

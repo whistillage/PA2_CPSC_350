@@ -1,1 +1,158 @@
-Lose...
+Print the initial world!
+
+Level 1: 
+wkx
+bxg
+cxk
+
+Level 2: 
+gmx
+mmm
+bgx
+
+#######################################
+Mario is starting Level 1 in position: (0, 0)
+================
+Hkx
+bxg
+cxk
+================
+Level: 0. Mario is at position: (0,0). Mario is at power level 0.
+Mario visited a warp pipe.
+================
+Mario is starting Level 2 in position: (1, 2)
+================
+gmx
+mmH
+bgx
+================
+Level: 1. Mario is at position: (1,2). Mario is at power level 0.
+Mario ate a mushroom.
+================
+gmH
+mmx
+bgx
+================
+Level: 1. Mario is at position: (0,2). Mario is at power level 1.
+Mario visited an empty space.
+================
+gHx
+mmx
+bgx
+================
+Level: 1. Mario is at position: (0,1). Mario is at power level 1.
+Mario ate a mushroom.
+================
+gxx
+mHx
+bgx
+================
+Level: 1. Mario is at position: (1,1). Mario is at power level 2.
+Mario ate a mushroom.
+================
+gxx
+Hxx
+bgx
+================
+Level: 1. Mario is at position: (1,0). Mario is at power level 2.
+Mario ate a mushroom.
+================
+gxx
+xHx
+bgx
+================
+Level: 1. Mario is at position: (1,1). Mario is at power level 2.
+Mario visited an empty space.
+================
+gHx
+xxx
+bgx
+================
+Level: 1. Mario is at position: (0,1). Mario is at power level 2.
+Mario visited an empty space.
+================
+Hxx
+xxx
+bgx
+================
+Level: 1. Mario is at position: (0,0). Mario is at power level 2.
+Mario encountered a goomba and won.
+================
+xHx
+xxx
+bgx
+================
+Level: 1. Mario is at position: (0,1). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxH
+xxx
+bgx
+================
+Level: 1. Mario is at position: (0,2). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxx
+xxx
+bgH
+================
+Level: 1. Mario is at position: (2,2). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxx
+xxH
+bgx
+================
+Level: 1. Mario is at position: (1,2). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxx
+xHx
+bgx
+================
+Level: 1. Mario is at position: (1,1). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxx
+xxH
+bgx
+================
+Level: 1. Mario is at position: (1,2). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxx
+xxx
+bgH
+================
+Level: 1. Mario is at position: (2,2). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxx
+xxH
+bgx
+================
+Level: 1. Mario is at position: (1,2). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxx
+xxx
+bgH
+================
+Level: 1. Mario is at position: (2,2). Mario is at power level 2.
+Mario visited an empty space.
+================
+xxx
+xxx
+bHx
+================
+Level: 1. Mario is at position: (2,1). Mario is at power level 2.
+Mario encountered a goomba and won.
+================
+xxx
+xxx
+Hxx
+================
+Level: 1. Mario is at position: (2,0). Mario is at power level 2.
+Mario encountered the boss and won.
+================
+Win!!!

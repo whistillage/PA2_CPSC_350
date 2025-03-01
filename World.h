@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Level.h"
+#include "FileProcessor.h"
 using namespace std;
 
 class World {
@@ -29,14 +30,11 @@ class World {
 
         Level* getLevel(int levelNum);
 
-        // return # of levels
-        int getLastLevelNum();
+        // print all levels
+        void printLevels(FileProcessor* fileprocessor);
 
-        // print all levels on cmd
-        void printLevels();
-
-        // print the level of LevelNum on cmd
-        void printLevel(int LevelNum);
+        // print the level of LevelNum, with mario in position[2]
+        void printLevelwithMario(int LevelNum, int* position, FileProcessor* fileProcessor);
 };
 
 #endif // End of header guard

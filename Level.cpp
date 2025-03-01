@@ -28,9 +28,6 @@ char Level::getRandomItem(int prob_c, int prob_x, int prob_g, int prob_k, int pr
         }
         random_num -= prob_arr[item_idx];
     }
-
-    /* Below is printed, only when the sum of input probabilities is less than 100. */
-    cout << "The Sum of Input Probabilities is less than 100. Inappropriate Input Error." << endl;
 }
 
 // Constructor

@@ -27,9 +27,9 @@ class GameSimulator {
 
         // if win, return 1
         // if gameover, return 0
-        int playGame();
+        int playGame(FileProcessor* fileProcessor);
 
-        void marioInteraction(Mario* mario, World* world);
+        void marioInteraction(Mario* mario, World* world, FileProcessor* fileProcessor);
 };
 
 #endif // End of header guard
