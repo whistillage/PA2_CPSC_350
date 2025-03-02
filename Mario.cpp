@@ -83,6 +83,7 @@ void Mario::revive(){
     _lives -= 1;
     _powerLev = 0;
     _defeatStreak = 0;
+    _coins = 0;
 }
 
 // Mario moves in a random direction
