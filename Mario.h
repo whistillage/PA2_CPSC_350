@@ -35,9 +35,6 @@ class Mario {
         // true when get damage in state of power level 0 and life 0
         bool _gameOver;
 
-        // true when get damage in state of power level 0
-        bool _dead;
-
     public:
         // Constructor
         Mario(int lives);
@@ -84,8 +81,6 @@ class Mario {
         void warp();
 
         bool isWarping();
-
-        bool isDead();
 
         bool isGameOver();
 

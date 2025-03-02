@@ -27,7 +27,8 @@ void GameSimulator::initGame(const char* inputFile, const char* outputFile){
     }
 
     int gameResult = playGame(fileProcessor);
-    fileProcessor->writeOutputFile("<<<<<<<<<<<<<<<<<< Game Result >>>>>>>>>>>>>>>>>>");
+    
+    fileProcessor->writeOutputFile("[GAME RESULT]");
     // if Mario wins the game,
     if (gameResult == 1){
         fileProcessor->writeOutputFile("Mario Win!!! ");
@@ -64,19 +65,12 @@ int GameSimulator::playGame(FileProcessor* fileProcessor){
         // skip revival or moving.
         if (mario->isWarping()){
             _curLevelNum += 1;
-            fileProcessor->writeOutputFile("Mario will WARP.");
+            fileProcessor->writeOutputFile("Mario will go to next level.");
             mario->setRandPosition(_gameInfo[1], fileProcessor, _curLevelNum);
             continue;
         }
-
-        // if mario is dead, get a new life in the same position.
-        if (mario->isDead()){
-            mario->revive();
-        }
-        // if mario is not dead, move into a new position.
-        else{
-            mario->move(_gameInfo[1], fileProcessor);
-        }
+        // move into a new position
+        mario->move(_gameInfo[1], fileProcessor);
     }
 
     if (mario->isWon()){

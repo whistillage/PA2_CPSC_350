@@ -10,7 +10,6 @@ Mario::Mario(int lives){
     _warping = false;
     _win = false;
     _gameOver = false;
-    _dead = false;
 }
 
 // Destructor
@@ -72,7 +71,7 @@ void Mario::damaged(int damage){
     }
     else{   // if (_powerLev == 0)
         if (_lives > 0){
-            _dead = true;
+            revive();
         }
         else{   // if (_lives == 0)
             _gameOver = true;
@@ -84,7 +83,6 @@ void Mario::revive(){
     _lives -= 1;
     _powerLev = 0;
     _defeatStreak = 0;
-    _dead = false;
 }
 
 // Mario moves in a random direction
@@ -148,10 +146,6 @@ void Mario::warp(){
 
 bool Mario::isWarping(){
     return _warping;
-}
-
-bool Mario::isDead(){
-    return _dead;
 }
 
 bool Mario::isGameOver(){
