@@ -4,7 +4,6 @@
 #include "World.h"
 #include "Mario.h"
 #include "FileProcessor.h"
-using namespace std;
 
 class GameSimulator {
     private:
@@ -31,6 +30,7 @@ class GameSimulator {
         // if gameover, return 0
         int playGame(FileProcessor* fileProcessor);
 
+        // Mario interacts with the item in the current position of the world
         void marioInteraction(Mario* mario, World* world, FileProcessor* fileProcessor);
 };
 

@@ -15,7 +15,7 @@ class Level {
         char** _grid;
 
         // According to the given probability of each item, return a random item(char)
-        char getRandomItem(int prob_c, int prob_x, int prob_g, int prob_k, int prob_m);
+        char getRandomItem(int probC, int probX, int probG, int probK, int probM);
 
     public:
         // Constructor

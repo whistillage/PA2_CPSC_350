@@ -8,8 +8,6 @@ FileProcessor::FileProcessor() {
 FileProcessor::~FileProcessor() {
 }
 
-// read gameInfo from inputFile
-// return if input file was read successfully
 /* Input File Format:
     Line # 1 is the number of levels, L (a positive integer)
     Line # 2 is the dimension of the grid, N (a positive integer)
@@ -20,6 +18,8 @@ FileProcessor::~FileProcessor() {
     Line # 7 is the approximate percentage of the positions in each level with Koopas (a positive integer)
     Line # 8 is the approximate percentage of the positions in each level with mushrooms (a positive integer)
 */
+// assign input data -> gameInfo
+// return true if files were read successfully
 bool FileProcessor::readFiles(const char* inputFile, const char* outputFile, int* gameInfo){
     _inFile.open(inputFile);
     _outFile.open(outputFile);

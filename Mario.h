@@ -1,10 +1,7 @@
 #ifndef MARIO_H // Header guard to prevent multiple inclusions
 #define MARIO_H
 
-#include <cstdlib>
-#include <iostream>
 #include "FileProcessor.h"
-using namespace std;
 
 class Mario {
     private:

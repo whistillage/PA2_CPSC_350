@@ -12,21 +12,21 @@
 */
 
 // According to the given probability of each item, return a random item(char)
-char Level::getRandomItem(int prob_c, int prob_x, int prob_g, int prob_k, int prob_m){
+char Level::getRandomItem(int probC, int probX, int probG, int probK, int probM){
     // array of random items(char)
-    char return_arr[] = {'c', 'x', 'g', 'k', 'm'};
+    char returnArr[] = {'c', 'x', 'g', 'k', 'm'};
 
     // array of given probabilities of items
-    int prob_arr[] = {prob_c, prob_x, prob_g, prob_k, prob_m};
+    int probArr[] = {probC, probX, probG, probK, probM};
 
     // using accumulation of the probabilities
     // create a random number: 0~99
-    int random_num = rand() % 100;
-    for (int item_idx = 0; item_idx < 5; item_idx++){
-        if (random_num < prob_arr[item_idx]){
-            return return_arr[item_idx];
+    int randomNum = rand() % 100;
+    for (int itemIdx = 0; itemIdx < 5; itemIdx++){
+        if (randomNum < probArr[itemIdx]){
+            return returnArr[itemIdx];
         }
-        random_num -= prob_arr[item_idx];
+        randomNum -= probArr[itemIdx];
     }
 }
 
@@ -45,21 +45,21 @@ Level::Level(int* gameInfo, bool isLastStage){
     }
 
     // create the level boss in a random position
-    int boss_RowIndex = rand() % (_dimension);
-    int boss_ColIndex = rand() % (_dimension);
-    _grid[boss_RowIndex][boss_ColIndex] = 'b';
+    int bossRowIndex = rand() % (_dimension);
+    int bossColIndex = rand() % (_dimension);
+    _grid[bossRowIndex][bossColIndex] = 'b';
 
     // create the warp pipe in a random position
     if (!isLastStage) {
-        int warpPipe_RowIndex, warpPipe_ColIndex;
+        int warpPipeRowIndex, warpPipeColIndex;
         
         // make sure that warp pipe not replace the boss
         do {
-            warpPipe_RowIndex = rand() % (_dimension);
-            warpPipe_ColIndex = rand() % (_dimension);
-        } while ((warpPipe_RowIndex == boss_RowIndex) && (warpPipe_ColIndex == boss_ColIndex));
+            warpPipeRowIndex = rand() % (_dimension);
+            warpPipeColIndex = rand() % (_dimension);
+        } while ((warpPipeRowIndex == bossRowIndex) && (warpPipeColIndex == bossColIndex));
 
-        _grid[warpPipe_RowIndex][warpPipe_ColIndex] = 'w';
+        _grid[warpPipeRowIndex][warpPipeColIndex] = 'w';
     }
 
 }

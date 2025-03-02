@@ -1,5 +1,3 @@
-#include "FileProcessor.h"
-#include "World.h"
 #include "GameSimulator.h"
 using namespace std;
 

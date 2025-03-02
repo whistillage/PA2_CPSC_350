@@ -1,10 +1,8 @@
 #ifndef WORLD_H // Header guard to prevent multiple inclusions
 #define WORLD_H
 
-#include <iostream>
 #include "Level.h"
 #include "FileProcessor.h"
-using namespace std;
 
 class World {
     private:
