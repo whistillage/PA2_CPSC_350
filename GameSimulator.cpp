@@ -27,7 +27,9 @@ void GameSimulator::initGame(const char* inputFile, const char* outputFile){
     }
 
     int gameResult = playGame(fileProcessor);
-    
+
+    fileProcessor->writeOutputFile("");
+    fileProcessor->writeOutputFile("#######################################");
     fileProcessor->writeOutputFile("[GAME RESULT]");
     // if Mario wins the game,
     if (gameResult == 1){
@@ -47,37 +49,48 @@ void GameSimulator::initGame(const char* inputFile, const char* outputFile){
 }
 
 int GameSimulator::playGame(FileProcessor* fileProcessor){
-    // integer variable for return value
+    // -1: error, 0: gameOver, 1: Win
     int returnNum = -1;
 
     World* world = new World(_gameInfo);
     world->createLevels();
+
+    // print every level before starting the game
     world->printLevels(fileProcessor);
 
     Mario* mario = new Mario(_gameInfo[2]);
     mario->setRandPosition(_gameInfo[1], fileProcessor, _curLevelNum);
 
-    while (!mario->isGameOver() && !mario->isWon()){
+
+    while (1){
+        // print current Level with Mario
         world->printLevelwithMario(_curLevelNum, mario->getPosition(), fileProcessor);
+        
+        // Mario interacts with the item in the current position of the world
         marioInteraction(mario, world, fileProcessor);
 
-        // if mario is warping to next level, increase levelNum and move to random position.
-        // skip revival or moving.
+        // if Mario wins or game's over, Mario doesn't move and break the loop
+        if (mario->isWon()){
+            returnNum = 1;
+            fileProcessor->writeOutputFile("Mario will stay put.");
+            break;
+        }
+        else if (mario->isGameOver()){
+            returnNum = 0;
+            fileProcessor->writeOutputFile("Mario will stay put.");
+            break;
+        }
+
+        // if mario is warping to next level, increase levelNum and set to random position.
         if (mario->isWarping()){
             _curLevelNum += 1;
             fileProcessor->writeOutputFile("Mario will go to next level.");
             mario->setRandPosition(_gameInfo[1], fileProcessor, _curLevelNum);
-            continue;
         }
-        // move into a new position
-        mario->move(_gameInfo[1], fileProcessor);
-    }
-
-    if (mario->isWon()){
-        returnNum = 1;
-    }
-    if (mario->isGameOver()){
-        returnNum = 0;
+        else{
+            // move one position in one of four directions
+            mario->move(_gameInfo[1], fileProcessor);
+        }
     }
 
     _moveCount = mario->getMoveCount();
