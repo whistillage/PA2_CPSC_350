@@ -1,102 +1,46 @@
 Print the initial world!
 
 Level 1: 
-mcm
-mxg
-kwb
+cmk
+mwk
+cxb
 
 Level 2: 
-cgm
-ckc
-mbc
+kgx
+cxg
+mmb
 
 #######################################
-Mario is starting Level 1 in position: (0, 1)
+Mario is starting Level 1 in position: (1, 2)
 ================
-mHm
-mxg
-kwb
+cmk
+mwH
+cxb
 ================
-Level: 0. Mario is at position: (0,1). Mario is at power level 0. Mario collected a coin.
+Level: 0. Mario is at position: (1,2). Mario is at power level 0. Mario encountered a koopa and won. Mario has 10 lives left. Mario has 0 coins. Mario will move LEFT.
 ================
-mxH
-mxg
-kwb
-================
-Level: 0. Mario is at position: (0,2). Mario is at power level 0. Mario ate a mushroom.
-================
-mxx
-mxH
-kwb
-================
-Level: 0. Mario is at position: (1,2). Mario is at power level 1. Mario encountered a goomba and won.
-================
-mxH
-mxx
-kwb
-================
-Level: 0. Mario is at position: (0,2). Mario is at power level 1. Mario visited an empty space.
-================
-mxx
-mxx
-kwH
-================
-Level: 0. Mario is at position: (2,2). Mario is at power level 1. Mario encountered the boss and lost.
-================
-mxx
-mxx
-kwH
-================
-Level: 0. Mario is at position: (2,2). Mario is at power level 0. Mario encountered the boss and won.
-================
-Mario is starting Level 2 in position: (1, 1)
-================
-cgm
-cHc
-mbc
-================
-Level: 1. Mario is at position: (1,1). Mario is at power level 0. Mario encountered a koopa and won.
-================
-cgm
-cxH
-mbc
-================
-Level: 1. Mario is at position: (1,2). Mario is at power level 0. Mario collected a coin.
-================
-cgm
-cxx
-mbH
-================
-Level: 1. Mario is at position: (2,2). Mario is at power level 0. Mario collected a coin.
-================
-cgH
-cxx
-mbx
-================
-Level: 1. Mario is at position: (0,2). Mario is at power level 0. Mario ate a mushroom.
-================
-cgx
-cxx
-mbH
-================
-Level: 1. Mario is at position: (2,2). Mario is at power level 1. Mario visited an empty space.
-================
-cgx
-cxx
+cmk
 mHx
+cxb
 ================
-Level: 1. Mario is at position: (2,1). Mario is at power level 1. Mario encountered the boss and lost.
+Level: 0. Mario is at position: (1,1). Mario is at power level 0. Mario visited a warp pipe. Mario has 10 lives left. Mario has 0 coins. Mario is starting Level 2 in position: (0, 1)
 ================
-cgx
-cxx
-mHx
+kHx
+cxg
+mmb
 ================
-Level: 1. Mario is at position: (2,1). Mario is at power level 0. Mario encountered the boss and lost.
+Level: 1. Mario is at position: (0,1). Mario is at power level 0. Mario encountered a goomba and won. Mario has 10 lives left. Mario has 0 coins. Mario will move RIGHT.
 ================
-cgx
-cxx
-mHx
+kxH
+cxg
+mmb
 ================
-Level: 1. Mario is at position: (2,1). Mario is at power level 0. Mario encountered the boss and won.
+Level: 1. Mario is at position: (0,2). Mario is at power level 0. Mario visited an empty space. Mario has 10 lives left. Mario has 0 coins. Mario will move UP.
+================
+kxx
+cxg
+mmH
+================
+Level: 1. Mario is at position: (2,2). Mario is at power level 0. Mario encountered the boss and won. Mario has 10 lives left. Mario has 0 coins. Mario will move UP.
 ================
 Win!!!

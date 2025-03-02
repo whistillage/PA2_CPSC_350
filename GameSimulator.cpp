@@ -71,7 +71,7 @@ int GameSimulator::playGame(FileProcessor* fileProcessor){
         }
         // if mario is not dead, move into a new position.
         else{
-            mario->move(_gameInfo[1]);
+            mario->move(_gameInfo[1], fileProcessor);
         }
     }
 
@@ -101,17 +101,17 @@ void GameSimulator::marioInteraction(Mario* mario, World* world, FileProcessor* 
     // according to the item in the position,
     switch (grid[marioPosition[0]][marioPosition[1]]){
         case 'x': {
-            fileProcessor->writeOutputFile("Mario visited an empty space.");
+            fileProcessor->writeOutputFile("Mario visited an empty space. ", false);
             break;
         }
         case 'm' : {
-            fileProcessor->writeOutputFile("Mario ate a mushroom.");
+            fileProcessor->writeOutputFile("Mario ate a mushroom. ", false);
             mario->increasePowerLev();
             grid[marioPosition[0]][marioPosition[1]] = 'x';
             break;
         }
         case 'c': {
-            fileProcessor->writeOutputFile("Mario collected a coin.");
+            fileProcessor->writeOutputFile("Mario collected a coin. ", false);
             mario->increaseCoins();
             grid[marioPosition[0]][marioPosition[1]] = 'x';
             break;
@@ -123,13 +123,13 @@ void GameSimulator::marioInteraction(Mario* mario, World* world, FileProcessor* 
             // if mario defeats in prob of 80%,
             if (randNum < 80){
                 mario->defeatEnemy();
-                fileProcessor->writeOutputFile("Mario encountered a goomba and won.");
+                fileProcessor->writeOutputFile("Mario encountered a goomba and won. ", false);
                 grid[marioPosition[0]][marioPosition[1]] = 'x';
             }
             // if mario loses in prob of 20%,
             else{
-                fileProcessor->writeOutputFile("Mario encountered a goomba and lost.");
-                mario->getDamage(1);
+                fileProcessor->writeOutputFile("Mario encountered a goomba and lost. ", false);
+                mario->damaged(1);
             }
             break;
         }
@@ -140,13 +140,13 @@ void GameSimulator::marioInteraction(Mario* mario, World* world, FileProcessor* 
             // if mario defeats in prob of 65%,
             if (randNum < 65){
                 mario->defeatEnemy();
-                fileProcessor->writeOutputFile("Mario encountered a koopa and won.");
+                fileProcessor->writeOutputFile("Mario encountered a koopa and won. ", false);
                 grid[marioPosition[0]][marioPosition[1]] = 'x';
             }
             // if mario loses in prob of 35%,
             else{
-                fileProcessor->writeOutputFile("Mario encountered a koopa and lost.");
-                mario->getDamage(1);
+                fileProcessor->writeOutputFile("Mario encountered a koopa and lost. ", false);
+                mario->damaged(1);
             }
             break;
         }
@@ -156,7 +156,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world, FileProcessor* 
 
             // if mario defeats in prob of 50%,
             if (randNum < 50){
-                fileProcessor->writeOutputFile("Mario encountered the boss and won.");
+                fileProcessor->writeOutputFile("Mario encountered the boss and won. ", false);
                 // if mario is in the last level,
                 if (_curLevelNum == _gameInfo[0] - 1){
                     mario->winGame();
@@ -167,16 +167,19 @@ void GameSimulator::marioInteraction(Mario* mario, World* world, FileProcessor* 
             }
             // if mario loses in prob of 50%,
             else{
-                fileProcessor->writeOutputFile("Mario encountered the boss and lost.");
-                mario->getDamage(2);
+                fileProcessor->writeOutputFile("Mario encountered the boss and lost. ", false);
+                mario->damaged(2);
             }
             break;
         }
         case 'w':
-        fileProcessor->writeOutputFile("Mario visited a warp pipe.");
+        fileProcessor->writeOutputFile("Mario visited a warp pipe. ", false);
             mario->warp();
             break;
     }
 
-    fileProcessor->writeOutputFile("================");
+    /* EX) Mario has 2 lives left.*/
+    fileProcessor->writeOutputFile("Mario has " + to_string(mario->getLives()) + " lives left. ", false);
+    /* EX) Mario has 1 coins.*/
+    fileProcessor->writeOutputFile("Mario has " + to_string(mario->getCoins()) + " coins. ", false);
 }

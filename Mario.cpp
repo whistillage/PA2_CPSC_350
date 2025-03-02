@@ -37,6 +37,16 @@ int Mario::getPowerLev(){
     return _powerLev;
 }
 
+// get _lives
+int Mario::getLives(){
+    return _lives;
+}
+
+// get _coins
+int Mario::getCoins(){
+    return _coins;
+}
+
 // increase _coins by 1
 void Mario::increaseCoins(){
     _coins += 1;
@@ -51,7 +61,7 @@ void Mario::increasePowerLev(){
     }
 }
 
-void Mario::getDamage(int damage){
+void Mario::damaged(int damage){
     if (_powerLev >= damage){
         _powerLev -= damage;
     }
@@ -73,37 +83,43 @@ void Mario::revive(){
 }
 
 // Mario moves in a random direction
-void Mario::move(int dimension){
+void Mario::move(int dimension, FileProcessor* fileProcessor){
+    fileProcessor->writeOutputFile("Mario will move ", false);
     switch (rand()%4){
-        // move right →→→→→
+        // move down ↓↓↓↓↓
         case 0:
             _position[0] += 1;
             if (_position[0] >= dimension){
                 _position[0] = 0;
             }
+            fileProcessor->writeOutputFile("DOWN.");
             break;
-        // move left ←←←←←
+        // move up ↑↑↑↑↑
         case 1:
             _position[0] -= 1;
             if (_position[0] <= -1){
                 _position[0] = dimension - 1;
             }
+            fileProcessor->writeOutputFile("UP.");
             break;
-        // move down ↓↓↓↓↓
+        // move right →→→→→
         case 2:
             _position[1] += 1;
             if (_position[1] >= dimension){
                 _position[1] = 0;
             }
+            fileProcessor->writeOutputFile("RIGHT.");
             break;
-        // move up ↑↑↑↑↑
+        // move left ←←←←←
         case 3:
             _position[1] -= 1;
             if (_position[1] <= -1){
                 _position[1] = dimension - 1;
             }
+            fileProcessor->writeOutputFile("LEFT.");
             break;
     }
+    fileProcessor->writeOutputFile("================");
 }
 
 void Mario::defeatEnemy(){

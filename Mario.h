@@ -51,6 +51,12 @@ class Mario {
         // get _powerLev
         int getPowerLev();
 
+        // get _lives
+        int getLives();
+
+        // get _coins
+        int getCoins();
+
         // increase _coins by 1
         void increaseCoins();
 
@@ -58,12 +64,12 @@ class Mario {
         void increasePowerLev();
 
         // if mario loses to Goomba, Koopa, or Boss
-        void getDamage(int damage);
+        void damaged(int damage);
 
         void revive();
 
         // Mario moves in a random direction
-        void move(int dimension);
+        void move(int dimension, FileProcessor* fileProcessor);
 
         void defeatEnemy();
 
