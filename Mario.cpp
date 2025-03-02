@@ -6,6 +6,7 @@ Mario::Mario(int lives){
     _coins = 0;
     _powerLev = 0;
     _defeatStreak = 0;
+    _moveCount = 0;
     _warping = false;
     _win = false;
     _gameOver = false;
@@ -47,6 +48,10 @@ int Mario::getCoins(){
     return _coins;
 }
 
+int Mario::getMoveCount(){
+    return _moveCount;
+}
+
 // increase _coins by 1
 void Mario::increaseCoins(){
     _coins += 1;
@@ -84,6 +89,8 @@ void Mario::revive(){
 
 // Mario moves in a random direction
 void Mario::move(int dimension, FileProcessor* fileProcessor){
+    _moveCount += 1;
+
     fileProcessor->writeOutputFile("Mario will move ", false);
     switch (rand()%4){
         // move down ↓↓↓↓↓

@@ -14,6 +14,8 @@ class GameSimulator {
         // array of game information
         int _gameInfo[8];
 
+        int _moveCount;
+
     public:
         // Constructor
         GameSimulator();

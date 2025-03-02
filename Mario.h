@@ -23,6 +23,9 @@ class Mario {
         // # of enemies Mario defeated on the same life
         int _defeatStreak;
 
+        // # of Mario's moves
+        int _moveCount;
+
         // true when mario defeats the boss or encounters warp pipe
         bool _warping;
 
@@ -56,6 +59,9 @@ class Mario {
 
         // get _coins
         int getCoins();
+
+        // get _moveCount
+        int getMoveCount();
 
         // increase _coins by 1
         void increaseCoins();

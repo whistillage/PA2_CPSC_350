@@ -3,6 +3,7 @@
 // Constructor
 GameSimulator::GameSimulator(){
     _curLevelNum = 0;
+    _moveCount = 0;
 }
 
 // Destructor
@@ -26,18 +27,20 @@ void GameSimulator::initGame(const char* inputFile, const char* outputFile){
     }
 
     int gameResult = playGame(fileProcessor);
+    fileProcessor->writeOutputFile("<<<<<<<<<<<<<<<<<< Game Result >>>>>>>>>>>>>>>>>>");
     // if Mario wins the game,
     if (gameResult == 1){
-        fileProcessor->writeOutputFile("Win!!!");
+        fileProcessor->writeOutputFile("Mario Win!!! ");
     }
     // if game over,
     else if (gameResult == 0){
-        fileProcessor->writeOutputFile("Lose...");
+        fileProcessor->writeOutputFile("Mario Lose...");
     }
     // error
     else{
         fileProcessor->writeOutputFile("Error");
     }
+    fileProcessor->writeOutputFile("Total moves: " + to_string(_moveCount));
 
     fileProcessor->closeFiles();
 }
@@ -61,6 +64,7 @@ int GameSimulator::playGame(FileProcessor* fileProcessor){
         // skip revival or moving.
         if (mario->isWarping()){
             _curLevelNum += 1;
+            fileProcessor->writeOutputFile("Mario will WARP.");
             mario->setRandPosition(_gameInfo[1], fileProcessor, _curLevelNum);
             continue;
         }
@@ -81,6 +85,8 @@ int GameSimulator::playGame(FileProcessor* fileProcessor){
     if (mario->isGameOver()){
         returnNum = 0;
     }
+
+    _moveCount = mario->getMoveCount();
 
     delete mario;
     delete world;

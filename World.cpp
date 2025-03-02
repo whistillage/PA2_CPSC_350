@@ -45,7 +45,7 @@ Level* World::getLevel(int levelNum){
 
 // print all levels
 void World::printLevels(FileProcessor* fileProcessor){
-    fileProcessor->writeOutputFile("Print the initial world!");
+    fileProcessor->writeOutputFile("[INITIAL WORLD]");
     for (int level = 0; level < _gameInfo[0]; level++){
         fileProcessor->writeOutputFile("");
         fileProcessor->writeOutputFile("Level " + to_string(level + 1) + ": ");
