@@ -45,8 +45,13 @@ bool FileProcessor::readFiles(const char* inputFile, const char* outputFile, int
     return true;
 }
 
-void FileProcessor::writeOutputFile(string text){
-    _outFile << text << endl;
+void FileProcessor::writeOutputFile(string text, bool newline){
+    if (newline){
+        _outFile << text << endl;
+    }
+    else{
+        _outFile << text;
+    }
 }
 
 void FileProcessor::closeFiles(){

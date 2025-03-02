@@ -93,7 +93,7 @@ void GameSimulator::marioInteraction(Mario* mario, World* world, FileProcessor* 
     fileProcessor->writeOutputFile("Level: "+ to_string(_curLevelNum) \
     + ". Mario is at position: (" + to_string(marioPosition[0]) + "," + to_string(marioPosition[1]) \
     + "). Mario is at power level " + to_string(mario->getPowerLev()) \
-    + ".");
+    + ". ", false);
 
     // grid of current Level
     char** grid = world->getLevel(_curLevelNum)->getGrid();

@@ -21,7 +21,8 @@ void Mario::setRandPosition(int dimension, FileProcessor* fileProcessor, int cur
     _position[0] = rand() % (dimension);
     _position[1] = rand() % (dimension);
 
-    fileProcessor->writeOutputFile("Mario is starting Level " + to_string(curLevelNum + 1) + " in position: (" + to_string(_position[0]) + ", " + to_string(_position[1]) + ")");
+    fileProcessor->writeOutputFile("Mario is starting Level " + to_string(curLevelNum + 1) \
+    + " in position: (" + to_string(_position[0]) + ", " + to_string(_position[1]) + ")");
     fileProcessor->writeOutputFile("================");
     // finished warping.
     _warping = false;

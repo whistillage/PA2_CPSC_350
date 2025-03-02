@@ -25,7 +25,7 @@ class FileProcessor {
         // return true if files were read successfully
         bool readFiles(const char* inputFile, const char* outputFile, int* gameInfo);
 
-        void writeOutputFile(string text);
+        void writeOutputFile(string text, bool newline = true);
 
         // close inputFile and outputFile
         void closeFiles();
