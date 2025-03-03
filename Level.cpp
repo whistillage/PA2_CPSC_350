@@ -28,6 +28,7 @@ char Level::getRandomItem(int probC, int probX, int probG, int probK, int probM)
         }
         randomNum -= probArr[itemIdx];
     }
+    return 'x';
 }
 
 // Constructor
