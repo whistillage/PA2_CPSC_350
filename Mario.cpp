@@ -75,11 +75,12 @@ void Mario::damaged(int damage){
     if (_powerLev >= damage){
         _powerLev -= damage;
     }
-    else{   // if (_powerLev == 0)
-        if (_lives > 0){
+    else{
+        if (_lives > 1){
             revive();
         }
-        else{   // if (_lives == 0)
+        else{   // if (_lives == 1)
+            _lives -= 1;
             _gameOver = true;
         }
     }
