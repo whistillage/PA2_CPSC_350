@@ -1,3 +1,9 @@
+// AUTHOR INFO
+// Full Name: Taehyun Kim (with Danica)
+// Student ID: 2484228
+// Chapman Email: taehykim@chapman.edu
+// Course Number & Section: CPSC-350-01
+// Assignment Number: PA 2: Not so Super Mario Bros.
 #ifndef LEVEL_H // Header guard to prevent multiple inclusions
 #define LEVEL_H
 
